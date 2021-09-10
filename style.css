@@ -16,6 +16,7 @@
 
 body {
   background-color: var(--background);
+  font: 16px "Poppins", sans-serif;
 }
 
 button {
@@ -25,8 +26,14 @@ button {
 ul {
   list-style: none;
 }
+
 .header {
   background-color: var(--shape);
+}
+
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
 }
 
 .header header {
@@ -40,4 +47,49 @@ ul {
 
 .header header img {
   max-width: 80px;
+}
+
+section.createTask {
+  background-color: var(--blue);
+  border-radius: 1rem;
+  margin-top: -5rem;
+  padding: 5rem 4rem;
+}
+
+section.createTask header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+section.createTask h1 {
+  color: var(--background);
+  font-size: 2.25rem;
+
+}
+
+section.createTask .input-group {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+section.createTask .input-group input {
+  background-color: var(--shape);
+  color: var(--text-body);
+  font-family: "Poppins";
+  font-weight: 500;
+  padding: 0.5rem;
+  border: 0;
+  border-radius: 0.25rem;
+}
+
+section.createTask .input-group button {
+  color: var(--shape);
+  background-color: var(--green);
+  border: 0;
+  padding: 0.65rem;
+  border-radius: 0.25rem;
+  font-weight: 600;
 }
