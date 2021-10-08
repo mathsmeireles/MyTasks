@@ -22,7 +22,7 @@
                 <h1>My Tasks</h1>
                 <div class="input-group">
                     <input type="text" placeholder="Write new task" id="newTask">
-                    <button>Send</button>
+                    <button onclick=postTask()>Send</button>
                 </div>
             </header>
             <div class="seeTasksDiv">
@@ -30,5 +30,50 @@
             </div>
         </section>
     </div>
+    <script>
+        const seeTasksDiv = document.querySelector('.seeTasksDiv')
+        
+        const seeTasksUl = document.createElement('ul')
+        seeTasksDiv.appendChild(seeTasksUl)
+        
+        
+        function clearTasks() {
+            seeTasksUl.innerHTML = ''
+        }
+        
+    
+        function updateTasks() {
+            getTasks()
+            clearTasks()
+        }
+        
+        function getTasks() {
+            fetch('https://mytod0list-api.herokuapp.com/src/controllers/list-tasks.php')
+                .then(response => response.json())
+                .then(data => {
+                    
+                    for(i = 0; i < data.tasks.length; i++) {
+                        const seeTasksLi = document.createElement('li')
+                        seeTasksLi.innerText = data.tasks[i].name
+                        seeTasksUl.appendChild(seeTasksLi)
+                    }
+                })
+        }
+        getTasks()
+
+        function postTask() {
+            let nameInput = document.querySelector('#newTask').value
+
+            const body = new FormData()
+            body.append("name", nameInput)
+
+            fetch('https://mytod0list-api.herokuapp.com/src/controllers/add-task.php', { method: 'POST', body})
+                .then(response => response.json())
+                .then(data => {
+                    updateTasks()
+                    document.querySelector('#newTask').value = ''
+                })
+        }
+    </script>
 </body>
 </html>

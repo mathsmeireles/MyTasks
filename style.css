@@ -93,3 +93,13 @@ section.createTask .input-group button {
     border-radius: 0.25rem;
     font-weight: 600;
 }
+
+section.createTask .seeTasksDiv ul li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #EBEBEB;
+    padding: 0.75rem;
+    color: var(--shape);
+    font-weight: 400;
+}
